@@ -1,12 +1,12 @@
-module.exports = function (api) {
+module.exports = (api) => {
   api.cache(true);
 
   const presets = [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
-        targets: "> 0.25%, not dead",
-        useBuiltIns: "usage",
+        targets: '> 0.25%, not dead',
+        useBuiltIns: 'usage',
         corejs: 3,
         modules: false,
       },
@@ -15,18 +15,18 @@ module.exports = function (api) {
 
   const plugins = [
     [
-      "module-resolver",
+      'module-resolver',
       {
-        root: ["./src"],
+        root: ['./src'],
         alias: {
-          imgs: "./public/images"
-        }
-      }
-    ]
-  ]
+          imgs: './public/images',
+        },
+      },
+    ],
+  ];
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };
