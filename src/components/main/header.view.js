@@ -1,20 +1,16 @@
+import { getHeaderStyle } from 'utils/style';
 import { createViewTemplate } from 'utils/template';
 import Core from 'views/core';
 
-export default class MoneyView extends Core {
+export default class HeaderView extends Core {
   constructor({ model }) {
     super();
     this.model = model;
     this.model.subscribe(this.update.bind(this));
     this.template = `
-      <style>
-        .button {
-          width: 20px;
-          height: 20px;
-        }
-      </style>
-      <div slot="money">
-        <button class="button"></button>
+      ${getHeaderStyle()}
+      <div class="header-wrapper">
+        <button class="count-button"></button>
         <span class="count">${this.model.getMoney()}</span>
       </div>
     `;
@@ -29,7 +25,7 @@ export default class MoneyView extends Core {
   }
 
   callback() {
-    this.$('.button').addEventListener('click', this.handleCount.bind(this));
+    this.$('.count-button').addEventListener('click', this.handleCount.bind(this));
   }
 
   setShadow(self) {

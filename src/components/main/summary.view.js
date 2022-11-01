@@ -1,7 +1,7 @@
 import { createViewTemplate } from 'utils/template';
 import Core from 'views/core';
 
-export default class KeeperView extends Core {
+export default class SummaryView extends Core {
   constructor({ model }) {
     super();
     this.model = model;

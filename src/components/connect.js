@@ -1,3 +1,3 @@
 import 'core/app';
-import 'components/keeper';
-import 'components/money';
+import 'components/main/summary';
+import 'components/main/header';

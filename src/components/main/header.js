@@ -1,11 +1,11 @@
-import { moneyView } from 'views/views';
+import { headerView } from 'views/views';
 
-export default class AppMoney extends HTMLElement {
+export default class MainHeader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
 
-    this.view = moneyView;
+    this.view = headerView;
     this.view.setShadow(this);
 
     this.render();
@@ -20,4 +20,4 @@ export default class AppMoney extends HTMLElement {
   }
 }
 
-customElements.define('app-money', AppMoney);
+customElements.define('main-header', MainHeader);
