@@ -12,6 +12,6 @@ export default class MoneyModel extends Observable {
 
   setMoney(money) {
     this.money = money;
-    this.notify(this.money);
+    this.notify();
   }
 }

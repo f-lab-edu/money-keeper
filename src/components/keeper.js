@@ -1,19 +1,22 @@
-import createTemplate from 'utils/template';
+import { keeperView } from 'views/views';
 
 export default class AppKeeper extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.template = '<slot name="keeper"></slot>';
+
+    this.view = keeperView;
+    this.view.setShadow(this);
+
     this.render();
   }
 
-  getTemplate() {
-    return this.template;
-  }
+  // connectedCallback() {
+  //   this.view.callback();
+  // }
 
   render() {
-    createTemplate(this);
+    this.view.render();
   }
 }
 

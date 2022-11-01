@@ -1,5 +1,4 @@
-import createTemplate from 'utils/template';
-import moneyView, { keeperView } from 'views/views';
+import { createTemplate } from 'utils/template';
 
 export default class MainApp extends HTMLElement {
   constructor() {
@@ -7,12 +6,8 @@ export default class MainApp extends HTMLElement {
     this.attachShadow({ mode: 'open' });
 
     this.template = `
-      <app-money>
-        ${moneyView.getSlot()}
-      </app-money>
-      <app-keeper>
-        ${keeperView.getSlot()}
-      </app-keeper>
+      <app-money></app-money>
+      <app-keeper></app-keeper>
     `;
     this.render();
   }

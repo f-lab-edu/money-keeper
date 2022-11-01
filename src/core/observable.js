@@ -11,7 +11,7 @@ export default class Observable {
     this.observers = [...this.observers].filter((subscriber) => subscriber !== observer);
   }
 
-  notify(data) {
-    this.observers.forEach((subscriber) => subscriber(data));
+  notify() {
+    this.observers.forEach((subscriber) => subscriber());
   }
 }

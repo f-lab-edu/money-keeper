@@ -1,20 +1,22 @@
-import createTemplate from 'utils/template';
+import { moneyView } from 'views/views';
 
 export default class AppMoney extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
 
-    this.template = '<slot name="money"></slot>';
+    this.view = moneyView;
+    this.view.setShadow(this);
+
     this.render();
   }
 
-  getTemplate() {
-    return this.template;
+  connectedCallback() {
+    this.view.callback();
   }
 
   render() {
-    createTemplate(this);
+    this.view.render();
   }
 }
 
