@@ -1,23 +1,24 @@
-import { headerView } from 'views/views';
+import Core from 'core/core';
+import { getHeaderStyle } from 'utils/style';
 
-export default class MainHeader extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-
-    this.view = headerView;
-    this.view.setShadow(this);
-
-    this.render();
+export default class MainHeader extends Core {
+  handleCounter() {
+    const { count } = this.store.getState();
+    this.store.dispatch('count', count + 1);
   }
 
   connectedCallback() {
-    this.view.callback();
+    this.$('.count-button').addEventListener('click', this.handleCounter.bind(this));
   }
 
   render() {
-    this.view.render();
+    const { count } = this.store.getState();
+    return `
+    ${getHeaderStyle()}
+    <div class="header-wrapper">
+      <button class="count-button"></button>
+      <span class="count">${count}</span>
+    </div>
+  `;
   }
 }
-
-customElements.define('main-header', MainHeader);
