@@ -87,8 +87,8 @@ export const getResetStyle = () => `
       font-size: 100%;
       font: inherit;
       vertical-align: baseline;
+      box-sizing: border-box;
     }
-    
     article,
     aside,
     details,
@@ -101,6 +101,10 @@ export const getResetStyle = () => `
     nav,
     section {
       display: block;
+    }
+    html,
+    body {
+      height: 100%;
     }
     body {
       line-height: 1;
@@ -145,13 +149,15 @@ export const getAppStyle = () => `
     .main-wrapper {
       display: flex;
       justify-content: center;
-      align-items: center;
       background: var(--background);
+      height: 100%;
     }
     .mobile-view {
+      display: grid;
+      grid-template-rows: 4fr 6fr;
       width: 400px;
-      height: 100vh;
-      background: white;
+      height: 100%;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
     }
   </style>
   `;
@@ -160,15 +166,23 @@ export const getHeaderStyle = () => `
   ${getResetStyle()}
   <style>
     .header-wrapper {
-      height: 40%;
+      display: flex;
+      align-items: end;
       padding: 20px;
+      height: 100%;
       background: var(--main);
       color: white;
     }
-    .count-button {
-      width: 20px;
-      height: 20px;
-      border: 1px solid white;
+    .budget-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .remain-budget-percent {
+      font-size: var(--font-3x);
+    }
+    .remain-budget {
+      font-size: var(--font-2x);
     }
   </style>
   `;
@@ -177,12 +191,21 @@ export const getSummaryStyle = () => `
   ${getResetStyle()}
   <style>
   .summary-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
     padding: 20px;
+    background: white;
+    height: 100%;
   }
-  .count-button {
-    width: 20px;
-    height: 20px;
-    border: 1px solid black;
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    height: 60px;
+    border-bottom: 1px solid gray;
   }
   </style>
   `;

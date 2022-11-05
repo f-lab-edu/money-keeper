@@ -1,7 +1,8 @@
 import Store from 'lib/Store';
 
 const initialState = {
-  remainBudget: 0,
+  remainBudget: 200000,
+  useBudget: 0,
 };
 
 /* Actions */
