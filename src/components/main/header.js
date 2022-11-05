@@ -1,10 +1,12 @@
 import Core from 'core/core';
+import { budget } from 'store/budget';
 import { getHeaderStyle } from 'utils/style';
 
 export default class MainHeader extends Core {
   handleCounter() {
     const { count } = this.store.getState();
-    this.store.dispatch('count', count + 1);
+    // this.store.dispatch('count', count + 1);
+    this.store.dispatch(budget(count + 1));
   }
 
   connectedCallback() {

@@ -1,11 +1,7 @@
 export default class Store {
-  // constructor({ state = {}, reducer }) {
-  //   this.state = state;
-  //   this.reducer = reducer;
-  //   this.observers = new Set();
-  // }
-  constructor({ state = {} }) {
+  constructor({ state = {}, reducer }) {
     this.state = state;
+    this.reducer = reducer;
     this.observers = new Set();
   }
 
@@ -26,13 +22,8 @@ export default class Store {
     this.observers.forEach((observer) => observer());
   }
 
-  // dispatch(action) {
-  //   this.state = this.reducer(this.state, action);
-  //   this.notify();
-  // }
-
-  dispatch(name, payload) {
-    this.state = { ...this.state, count: payload };
+  dispatch(action) {
+    this.state = this.reducer(this.state, action);
     this.notify();
   }
 
