@@ -1,6 +1,3 @@
-/**
- * Not Using
- */
 import Observable from 'core/observable';
 
 export default class MoneyModel extends Observable {

@@ -176,13 +176,5 @@ export const getHeaderStyle = () => `
 export const getSummaryStyle = () => `
   ${getResetStyle()}
   <style>
-  .summary-wrapper {
-    padding: 20px;
-  }
-  .count-button {
-    width: 20px;
-    height: 20px;
-    border: 1px solid black;
-  }
   </style>
   `;
