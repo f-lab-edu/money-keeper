@@ -4,9 +4,8 @@ import { getHeaderStyle } from 'utils/style';
 
 export default class MainHeader extends Core {
   handleCounter() {
-    const { count } = this.store.getState();
-    // this.store.dispatch('count', count + 1);
-    this.store.dispatch(budget(count + 1));
+    const { remainBudget } = this.store.getState();
+    this.store.dispatch(budget(remainBudget + 1));
   }
 
   connectedCallback() {
@@ -14,12 +13,12 @@ export default class MainHeader extends Core {
   }
 
   render() {
-    const { count } = this.store.getState();
+    const { remainBudget } = this.store.getState();
     return `
     ${getHeaderStyle()}
     <div class="header-wrapper">
       <button class="count-button"></button>
-      <span class="count">${count}</span>
+      <span class="count">${remainBudget}</span>
     </div>
   `;
   }

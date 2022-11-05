@@ -3,12 +3,12 @@ import { getSummaryStyle } from 'utils/style';
 
 export default class MainSummary extends Core {
   render() {
-    const { count } = this.store.getState();
+    const { remainBudget } = this.store.getState();
     return `
     ${getSummaryStyle()}
     <div class="summary-wrapper">
       <button class="count-button"></button>
-      <span class="count">${count}</span>
+      <span class="count">${remainBudget}</span>
     </div>
     `;
   }
