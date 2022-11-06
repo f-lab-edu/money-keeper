@@ -1,8 +1,8 @@
 import Store from 'lib/Store';
 
 const initialState = {
-  remainBudget: 200000,
-  useBudget: 0,
+  remainingBudget: 200000,
+  usedBudget: 0,
 };
 
 /* Actions */
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case BUDGET: {
-      return { ...state, remainBudget: payload };
+      return { ...state, remainingBudget: payload };
     }
     default: {
       return { ...state };
