@@ -10,9 +10,9 @@ export default class FloatingButton extends Core {
   render() {
     return `
     ${getFloatingButtonStyle()}
-    <div class="button-wrapper">
+    <button class="button-wrapper">
       <plus-icon w="20" h="20" fill="white"></plus-icon>
-    </div>
+    </button>
   `;
   }
 }

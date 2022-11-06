@@ -30,11 +30,15 @@ export default class MainHeader extends Core {
         <section class="remainingbudget">₩ ${getLocaleString(remainingBudget)} 남음</section>
         <div class="used-wrapper">
           <div>
-            <wallet-icon w="15" h="15" fill="white"></wallet-icon>
+            <button>
+              <wallet-icon w="15" h="15" fill="white"></wallet-icon>
+            </button>
             <span class="used-budget">₩ ${getLocaleString(usedBudget)}</span>
           </div>
           <div>
-            <time-icon w="15" h="15" fill="white"></time-icon>
+            <button>
+              <time-icon w="15" h="15" fill="white"></time-icon>
+            </button>
             <span class="remainingday">0 일</span>
           </div>
         </div>

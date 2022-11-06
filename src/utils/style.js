@@ -176,7 +176,7 @@ export const getHeaderStyle = () => `
     .budget-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
     .remainingbudget-percent {
       font-size: var(--font-3x);
@@ -204,17 +204,16 @@ export const getSummaryStyle = () => `
     display: flex;
     flex-direction: column;
     justify-content: start;
-    gap: 20px;
-    padding: 20px;
+    padding: 0 20px;
     background: white;
     height: 100%;
   }
   .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 10px 0;
-    height: 60px;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 20px 0;
     border-bottom: 1px solid gray;
   }
   </style>
