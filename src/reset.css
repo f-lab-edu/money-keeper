@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 /* https://colorhunt.co/palette/fff8ea9e7676815b5b594545 */
 :root {
   --main: #9e7676;
