@@ -209,3 +209,23 @@ export const getSummaryStyle = () => `
   }
   </style>
   `;
+
+export const getFloatingButtonStyle = () => `
+  ${getResetStyle()}
+  <style>
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--main-dark);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  </style>
+  `;
