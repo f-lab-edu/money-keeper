@@ -178,11 +178,21 @@ export const getHeaderStyle = () => `
       flex-direction: column;
       gap: 0.5rem;
     }
-    .remain-budget-percent {
+    .remainingbudget-percent {
       font-size: var(--font-3x);
     }
-    .remain-budget {
+    .remainingbudget {
       font-size: var(--font-2x);
+    }
+    .used-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .used-wrapper > div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
   </style>
   `;
