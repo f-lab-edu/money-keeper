@@ -1,21 +1,29 @@
 import Store from 'lib/Store';
 
 const initialState = {
-  count: 0,
+  remainingBudget: 200000,
+  usedBudget: 0,
 };
 
 /* Actions */
+const BUDGET = 'BUDGET';
 
 /* Action Creators */
+export const budget = (payload) => ({ type: BUDGET, payload });
 
-// eslint-disable-next-line default-param-last
-// const reducer = (state = initialState, action) => ({
-//   state,
-//   action,
-// });
+/* Reducer */
+const reducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case BUDGET: {
+      return { ...state, remainingBudget: payload };
+    }
+    default: {
+      return { ...state };
+    }
+  }
+};
 
-// const store = new Store({ state: initialState, reducer });
-
-const store = new Store({ state: initialState });
+const store = new Store({ state: initialState, reducer });
 
 export default store;

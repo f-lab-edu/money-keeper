@@ -87,8 +87,8 @@ export const getResetStyle = () => `
       font-size: 100%;
       font: inherit;
       vertical-align: baseline;
+      box-sizing: border-box;
     }
-    
     article,
     aside,
     details,
@@ -101,6 +101,10 @@ export const getResetStyle = () => `
     nav,
     section {
       display: block;
+    }
+    html,
+    body {
+      height: 100%;
     }
     body {
       line-height: 1;
@@ -145,13 +149,15 @@ export const getAppStyle = () => `
     .main-wrapper {
       display: flex;
       justify-content: center;
-      align-items: center;
       background: var(--background);
+      height: 100%;
     }
     .mobile-view {
+      display: grid;
+      grid-template-rows: 4fr 6fr;
       width: 400px;
-      height: 100vh;
-      background: white;
+      height: 100%;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
     }
   </style>
   `;
@@ -160,15 +166,33 @@ export const getHeaderStyle = () => `
   ${getResetStyle()}
   <style>
     .header-wrapper {
-      height: 40%;
+      display: flex;
+      align-items: end;
       padding: 20px;
+      height: 100%;
       background: var(--main);
       color: white;
     }
-    .count-button {
-      width: 20px;
-      height: 20px;
-      border: 1px solid white;
+    .budget-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .remainingbudget-percent {
+      font-size: var(--font-3x);
+    }
+    .remainingbudget {
+      font-size: var(--font-2x);
+    }
+    .used-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .used-wrapper > div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
   </style>
   `;
@@ -177,12 +201,40 @@ export const getSummaryStyle = () => `
   ${getResetStyle()}
   <style>
   .summary-wrapper {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 20px;
+    background: white;
+    height: 100%;
   }
-  .count-button {
-    width: 20px;
-    height: 20px;
-    border: 1px solid black;
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 20px 0;
+    border-bottom: 1px solid gray;
+  }
+  </style>
+  `;
+
+export const getFloatingButtonStyle = () => `
+  ${getResetStyle()}
+  <style>
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--main-dark);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   </style>
   `;

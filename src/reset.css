@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* https://colorhunt.co/palette/fff8ea9e7676815b5b594545 */
 :root {
-  --main: #0b86dd;
-  --background: #f7f7f7;
+  --main: #9e7676;
+  --main-dark: #594545;
+  --background: #fff8ea;
+  --font-xs: 0.5rem;
+  --font-s: 0.75rem;
+  --font-l: 1.5rem;
+  --font-2x: 2rem;
+  --font-3x: 3rem;
 }
 
 html,
@@ -90,6 +103,12 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 article,
