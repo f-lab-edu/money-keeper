@@ -8,6 +8,8 @@
 :root {
   --main: #9e7676;
   --main-dark: #594545;
+  --main-income: #194545;
+  --main-expense: #994545;
   --background: #fff8ea;
   --font-xs: 0.5rem;
   --font-s: 0.75rem;

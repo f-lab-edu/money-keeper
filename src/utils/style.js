@@ -146,18 +146,24 @@ export const getResetStyle = () => `
 export const getAppStyle = () => `
   ${getResetStyle()}
   <style>
-    .main-wrapper {
+    .app-wrapper {
       display: flex;
       justify-content: center;
       background: var(--background);
       height: 100%;
     }
     .mobile-view {
-      display: grid;
-      grid-template-rows: 4fr 6fr;
       width: 400px;
       height: 100%;
       box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    }
+    .main-wrapper {
+      display: grid;
+      grid-template-rows: 4fr 6fr;
+      height: 100%;
+    }
+    .calculator-wrapper {
+      height: 100%;
     }
   </style>
   `;
@@ -235,6 +241,71 @@ export const getFloatingButtonStyle = () => `
     border-radius: 50%;
     background: var(--main-dark);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  </style>
+  `;
+
+export const getCalculatorStyle = () => `
+  ${getResetStyle()}
+  <style>
+  .calculator-wrapper {
+    display: grid;
+    grid-template-rows: 4fr 6fr;
+    height: 100%;
+    color: white;
+  }
+  .calculator-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--main-expense);
+  }
+  .income-background {
+    background: var(--main-income);
+  }
+  .inout-button-wrapper {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+  }
+  .selected {
+    font-size: var(--font-2x);
+  }
+  .inout-view-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-3x);
+  }
+  .calculator-input {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: white;
+    color: black;
+  }
+  .digit-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .digit {
+    width: 100%;
+    height: 100%;
+    font-size: var(--font-l);
+  }
+  .add-button-wrapper {
+    display: flex;
+    justify-content: end;
+    
+  }
+  .add-button {
+    padding: 10px;
+    background: black;
+    border-radius: 5px;
+  }
+  button {
+    display: block;
   }
   </style>
   `;

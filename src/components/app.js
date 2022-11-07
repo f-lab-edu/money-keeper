@@ -1,3 +1,4 @@
+import MainCalculator from 'components/calulator/calculator';
 import FloatingButton from 'components/calulator/floatingButton';
 import MainHeader from 'components/main/header';
 import MainSummary from 'components/main/summary';
@@ -10,19 +11,38 @@ export default class MainApp extends Core {
     this.defineTag(MainHeader, 'main-header', { store });
     this.defineTag(MainSummary, 'main-summary', { store });
     this.defineTag(FloatingButton, 'floating-button');
+    this.defineTag(MainCalculator, 'main-calculator', { store });
   }
 
+  goToCalculator() {}
+
+  // connectedCallback() {
+  //   this.$('.floating-button').addEventListener('click', this.goToCalculator);
+  // }
+
   render() {
+    // return `
+    //   ${getAppStyle()}
+    //   <div class="app-wrapper">
+    //     <div class="mobile-view">
+    //       <div class="main-wrapper">
+    //         <main-header></main-header>
+    //         <main-summary></main-summary>
+    //         <floating-button class="floating-button"></floating-button>
+    //       </div>
+    //     </div>
+    //   </div>
+    // `;
     return `
     ${getAppStyle()}
-    <div class="main-wrapper">
+    <div class="app-wrapper">
       <div class="mobile-view">
-        <main-header></main-header>
-        <main-summary></main-summary>
-        <floating-button></floating-button>
+        <div class="calculator-wrapper">
+          <main-calculator></main-calculator>
+        </div>
       </div>
     </div>
-  `;
+    `;
   }
 }
 
