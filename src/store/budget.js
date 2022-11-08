@@ -10,6 +10,7 @@ const initialState = {
 
 /* Actions */
 const BUDGET = 'BUDGET';
+const SPENT_BUDGET = 'SPENT_BUDGET';
 const INCOME = 'INCOME';
 const EXPENSE = 'EXPENSE';
 const IN_OUT_TYPE = 'IN_OUT_TYPE';
@@ -17,6 +18,7 @@ const IN_OUT_CLEAR = 'IN_OUT_CLEAR';
 
 /* Action Creators */
 export const budget = (payload) => ({ type: BUDGET, payload });
+export const spentBudget = (payload) => ({ type: SPENT_BUDGET, payload });
 export const income = (payload) => ({ type: INCOME, payload });
 export const expense = (payload) => ({ type: EXPENSE, payload });
 export const inOutType = (payload) => ({ type: IN_OUT_TYPE, payload });
@@ -28,6 +30,9 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case BUDGET: {
       return { ...state, remainingBudget: payload };
+    }
+    case SPENT_BUDGET: {
+      return { ...state, usedBudget: payload };
     }
     case INCOME: {
       return { ...state, incomeBudget: payload };

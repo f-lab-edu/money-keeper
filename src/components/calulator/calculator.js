@@ -1,7 +1,7 @@
 import CancelIcon from 'components/icon/cancel';
 import DeleteLeftIcon from 'components/icon/deleteLeft';
 import Core from 'core/core';
-import { income, expense, inOutType, budget, inOutClear } from 'store/budget';
+import { income, expense, inOutType, budget, inOutClear, spentBudget } from 'store/budget';
 import { getLocaleString } from 'utils/data';
 import { getCalculatorStyle } from 'utils/style';
 
@@ -50,24 +50,35 @@ export default class MainCalculator extends Core {
     }
   }
 
-  handleReflectBudget() {
-    const { calculatorType, incomeBudget, expenseBudget, remainingBudget } = this.store.getState();
+  handleReflectBudget(event) {
+    // eslint-disable-next-line max-len
+    const { calculatorType, incomeBudget, expenseBudget, remainingBudget, usedBudget } = this.store.getState();
     switch (calculatorType) {
       case 'income': {
         this.store.dispatch(budget(remainingBudget + Number(incomeBudget)));
-        return this.store.dispatch(inOutClear());
+        this.store.dispatch(spentBudget(usedBudget - Number(incomeBudget)));
+        this.store.dispatch(inOutClear());
+        return this.goToMain(event);
       }
       case 'expense': {
         this.store.dispatch(budget(remainingBudget - Number(expenseBudget)));
-        return this.store.dispatch(inOutClear());
+        this.store.dispatch(spentBudget(usedBudget + Number(expenseBudget)));
+        this.store.dispatch(inOutClear());
+        return this.goToMain(event);
       }
       default:
         return new Error('error');
     }
   }
 
+  goToMain(event) {
+    const found = event.composedPath().find((e) => e.className === 'mobile-view');
+    found.querySelector('.calculator-wrapper').style.display = 'none';
+  }
+
   handleClose(event) {
     event.stopPropagation();
+    this.goToMain(event);
   }
 
   connectedCallback() {

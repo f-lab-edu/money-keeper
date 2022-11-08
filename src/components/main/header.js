@@ -1,7 +1,6 @@
 import TimeIcon from 'components/icon/time';
 import WalletIcon from 'components/icon/wallet';
 import Core from 'core/core';
-// import { budget } from 'store/budget';
 import { getLocaleString } from 'utils/data';
 import { getHeaderStyle } from 'utils/style';
 
@@ -10,18 +9,10 @@ export default class MainHeader extends Core {
     this.defineTag(WalletIcon, 'wallet-icon');
     this.defineTag(TimeIcon, 'time-icon');
   }
-  // handleCounter() {
-  //   const { remainingBudget } = this.store.getState();
-  //   this.store.dispatch(budget(remainingBudget + 1));
-  // }
-
-  // connectedCallback() {
-  // this.$('.count-button').addEventListener('click', this.handleCounter.bind(this));
-  // }
 
   render() {
     const { remainingBudget, usedBudget } = this.store.getState();
-    const remainingBudgetPercent = 100 - (remainingBudget * usedBudget) / 100;
+    const remainingBudgetPercent = Math.floor((usedBudget / remainingBudget) * 100);
     return `
     ${getHeaderStyle()}
     <div class="header-wrapper">

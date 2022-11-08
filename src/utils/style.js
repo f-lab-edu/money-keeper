@@ -160,10 +160,13 @@ export const getAppStyle = () => `
     .main-wrapper {
       display: grid;
       grid-template-rows: 4fr 6fr;
+      position: relative;
       height: 100%;
     }
     .calculator-wrapper {
+      display: none;
       height: 100%;
+      z-index: 10;
     }
   </style>
   `;
@@ -232,7 +235,7 @@ export const getFloatingButtonStyle = () => `
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: absolute;
     left: 50%;
     bottom: 5%;
     transform: translateX(-50%);
@@ -241,6 +244,7 @@ export const getFloatingButtonStyle = () => `
     border-radius: 50%;
     background: var(--main-dark);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
   }
   </style>
   `;
