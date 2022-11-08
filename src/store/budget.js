@@ -13,12 +13,14 @@ const BUDGET = 'BUDGET';
 const INCOME = 'INCOME';
 const EXPENSE = 'EXPENSE';
 const IN_OUT_TYPE = 'IN_OUT_TYPE';
+const IN_OUT_CLEAR = 'IN_OUT_CLEAR';
 
 /* Action Creators */
 export const budget = (payload) => ({ type: BUDGET, payload });
 export const income = (payload) => ({ type: INCOME, payload });
 export const expense = (payload) => ({ type: EXPENSE, payload });
 export const inOutType = (payload) => ({ type: IN_OUT_TYPE, payload });
+export const inOutClear = () => ({ type: IN_OUT_CLEAR });
 
 /* Reducer */
 const reducer = (state = initialState, action) => {
@@ -35,6 +37,9 @@ const reducer = (state = initialState, action) => {
     }
     case IN_OUT_TYPE: {
       return { ...state, calculatorType: payload };
+    }
+    case IN_OUT_CLEAR: {
+      return { ...state, incomeBudget: '0', expenseBudget: '0' };
     }
     default: {
       return { ...state };

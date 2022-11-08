@@ -259,6 +259,8 @@ export const getCalculatorStyle = () => `
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
+  }
+  .expense-background {
     background: var(--main-expense);
   }
   .income-background {
@@ -270,7 +272,10 @@ export const getCalculatorStyle = () => `
     gap: 10px;
   }
   .selected {
-    font-size: var(--font-2x);
+    background: var(--background);
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: black
   }
   .inout-view-wrapper {
     display: flex;
@@ -294,12 +299,12 @@ export const getCalculatorStyle = () => `
     height: 100%;
     font-size: var(--font-l);
   }
-  .add-button-wrapper {
+  .reflect-button-wrapper {
     display: flex;
     justify-content: end;
     
   }
-  .add-button {
+  .reflect-button {
     padding: 10px;
     background: black;
     border-radius: 5px;

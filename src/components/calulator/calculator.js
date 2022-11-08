@@ -1,7 +1,7 @@
 import CancelIcon from 'components/icon/cancel';
 import DeleteLeftIcon from 'components/icon/deleteLeft';
 import Core from 'core/core';
-import { income, expense, inOutType } from 'store/budget';
+import { income, expense, inOutType, budget, inOutClear } from 'store/budget';
 import { getLocaleString } from 'utils/data';
 import { getCalculatorStyle } from 'utils/style';
 
@@ -13,7 +13,6 @@ export default class MainCalculator extends Core {
 
   handleDigit(event) {
     const digit = event.target.textContent;
-
     const { calculatorType, incomeBudget, expenseBudget } = this.store.getState();
     switch (calculatorType) {
       case 'income': {
@@ -31,15 +30,52 @@ export default class MainCalculator extends Core {
 
   handleType(event) {
     const { classList } = event.target;
-
     if (classList.contains('income-button')) return this.store.dispatch(inOutType('income'));
     if (classList.contains('expense-button')) return this.store.dispatch(inOutType('expense'));
     return this.store.dispatch(inOutType('expense'));
   }
 
+  handleDeleteDigit(event) {
+    event.stopPropagation();
+    const { calculatorType, incomeBudget, expenseBudget } = this.store.getState();
+    switch (calculatorType) {
+      case 'income': {
+        return this.store.dispatch(income(incomeBudget.slice(0, -1)));
+      }
+      case 'expense': {
+        return this.store.dispatch(expense(expenseBudget.slice(0, -1)));
+      }
+      default:
+        return new Error('error');
+    }
+  }
+
+  handleReflectBudget() {
+    const { calculatorType, incomeBudget, expenseBudget, remainingBudget } = this.store.getState();
+    switch (calculatorType) {
+      case 'income': {
+        this.store.dispatch(budget(remainingBudget + Number(incomeBudget)));
+        return this.store.dispatch(inOutClear());
+      }
+      case 'expense': {
+        this.store.dispatch(budget(remainingBudget - Number(expenseBudget)));
+        return this.store.dispatch(inOutClear());
+      }
+      default:
+        return new Error('error');
+    }
+  }
+
+  handleClose(event) {
+    event.stopPropagation();
+  }
+
   connectedCallback() {
     this.$('.calculator-input').addEventListener('click', this.handleDigit.bind(this));
     this.$('.inout-button-wrapper').addEventListener('click', this.handleType.bind(this));
+    this.$('.digit.delete').addEventListener('click', this.handleDeleteDigit.bind(this));
+    this.$('.reflect-button').addEventListener('click', this.handleReflectBudget.bind(this));
+    this.$('.close-button').addEventListener('click', this.handleClose.bind(this));
   }
 
   render() {
@@ -51,7 +87,7 @@ export default class MainCalculator extends Core {
     <div class="calculator-wrapper">
       <header class="calculator-header ${isExpense ? 'expense-background' : 'income-background'}">
         <div>
-          <button>
+          <button class="close-button">
             <cancel-icon w="20" h="20" fill="white"></cancel-icon>
           </button>
           <div class="inout-button-wrapper">
@@ -62,8 +98,8 @@ export default class MainCalculator extends Core {
         <div class="inout-view-wrapper">
           ${isExpense ? `- ${calculatorView}` : calculatorView}
         </div>
-        <div class="add-button-wrapper">
-          <button class="add-button">추가하기</button>
+        <div class="reflect-button-wrapper">
+          <button class="reflect-button">반영하기</button>
         </div>
       </header>
       <section class="calculator-input">
@@ -101,7 +137,7 @@ export default class MainCalculator extends Core {
           <button class="digit 11">0</button>
         </span>
         <span class="digit-wrapper">
-          <button class="digit 12">
+          <button class="digit delete">
             <delete-left-icon></delete-left-icon>
           </button>
         </span>
