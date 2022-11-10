@@ -22,7 +22,7 @@ export const spentBudget = (payload) => ({ type: SPENT_BUDGET, payload });
 export const income = (payload) => ({ type: INCOME, payload });
 export const expense = (payload) => ({ type: EXPENSE, payload });
 export const inOutType = (payload) => ({ type: IN_OUT_TYPE, payload });
-export const inOutClear = () => ({ type: IN_OUT_CLEAR });
+export const budgetClear = () => ({ type: IN_OUT_CLEAR });
 
 /* Reducer */
 const reducer = (state = initialState, action) => {

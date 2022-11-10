@@ -1,7 +1,7 @@
 import CancelIcon from 'components/icon/cancel';
 import DeleteLeftIcon from 'components/icon/deleteLeft';
 import Core from 'core/core';
-import { income, expense, inOutType, budget, inOutClear, spentBudget } from 'store/budget';
+import { income, expense, inOutType, budget, budgetClear, spentBudget } from 'store/budget';
 import { getLocaleString } from 'utils/data';
 import { getCalculatorStyle } from 'utils/style';
 
@@ -30,14 +30,19 @@ export default class MainCalculator extends Core {
 
   handleType(event) {
     const { classList } = event.target;
-    if (classList.contains('income-button')) return this.store.dispatch(inOutType('income'));
-    if (classList.contains('expense-button')) return this.store.dispatch(inOutType('expense'));
+    if (classList.contains('income-button')) {
+      return this.store.dispatch(inOutType('income'));
+    }
+    if (classList.contains('expense-button')) {
+      return this.store.dispatch(inOutType('expense'));
+    }
     return this.store.dispatch(inOutType('expense'));
   }
 
   handleDeleteDigit(event) {
     event.stopPropagation();
     const { calculatorType, incomeBudget, expenseBudget } = this.store.getState();
+
     switch (calculatorType) {
       case 'income': {
         return this.store.dispatch(income(incomeBudget.slice(0, -1)));
@@ -51,19 +56,20 @@ export default class MainCalculator extends Core {
   }
 
   handleReflectBudget(event) {
-    // eslint-disable-next-line max-len
-    const { calculatorType, incomeBudget, expenseBudget, remainingBudget, usedBudget } = this.store.getState();
+    // eslint-disable-next-line operator-linebreak
+    const { calculatorType, incomeBudget, expenseBudget, remainingBudget, usedBudget } =
+      this.store.getState();
     switch (calculatorType) {
       case 'income': {
         this.store.dispatch(budget(remainingBudget + Number(incomeBudget)));
         this.store.dispatch(spentBudget(usedBudget - Number(incomeBudget)));
-        this.store.dispatch(inOutClear());
+        this.store.dispatch(budgetClear());
         return this.goToMain(event);
       }
       case 'expense': {
         this.store.dispatch(budget(remainingBudget - Number(expenseBudget)));
         this.store.dispatch(spentBudget(usedBudget + Number(expenseBudget)));
-        this.store.dispatch(inOutClear());
+        this.store.dispatch(budgetClear());
         return this.goToMain(event);
       }
       default:

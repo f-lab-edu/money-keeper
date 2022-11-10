@@ -12,7 +12,11 @@ export default class MainHeader extends Core {
 
   render() {
     const { remainingBudget, usedBudget } = this.store.getState();
-    const remainingBudgetPercent = Math.floor((usedBudget / remainingBudget) * 100);
+    const isPositiveUsedBudget = usedBudget > 0;
+    const remainingBudgetPercent = isPositiveUsedBudget //
+      ? Math.floor((usedBudget / remainingBudget) * 100)
+      : 0;
+
     return `
     ${getHeaderStyle()}
     <div class="header-wrapper">
@@ -24,7 +28,7 @@ export default class MainHeader extends Core {
             <button>
               <wallet-icon w="15" h="15" fill="white"></wallet-icon>
             </button>
-            <span class="used-budget">₩ ${getLocaleString(usedBudget)}</span>
+            <span class="used-budget">₩ ${isPositiveUsedBudget ? getLocaleString(usedBudget) : 0}</span>
           </div>
           <div>
             <button>
